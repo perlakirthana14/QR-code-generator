@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR code generator</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <center>
+    <div class="divtag">
+        <span id="spantag">QR Code Generator</span>
+        <br><br>
+        <input type="text" placeholder="Enter Text" id="inputtag">
+        <br><br>
+        <center>
+        <button type="button" onclick="generateqr()">Generate QR code</button><br><br>
+        <img  id="imgtag">
+    </center>
+    </div>
+</center>
+<script>
+ function generateqr(){
+    let qrcode=document.getElementById("inputtag").value;
+    let goourl="https://www.google.com/search?tbm=isch&q="+qrcode
+    let res="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+encodeURIComponent(goourl);
+    document.getElementById("imgtag").src= res;//safely encode a URL by converting special characters 
+    // (like spaces, &, ?, =, etc.) into a format that browsers and APIs can understand correctly.
+}
+
+
+</script>
+</body>
+</html>
